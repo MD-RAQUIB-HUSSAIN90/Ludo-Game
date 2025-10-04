@@ -1,34 +1,55 @@
-import { useState } from "react";
-import "../styles/numberSelector.css";
-function NumberSelect() {
-  const array = [1, 2, 3, 4, 5, 6];
-  const [selectedNumber, setSelectedNumber] = useState();
+import styled from "styled-components";
+
+function NumberSelect({setSelectedNumber,selectedNumber }) {
+  const arrayNum = [1, 2, 3, 4, 5, 6];
+ 
+
 
   return (
-    <div>
-      {array.map((num, i) => (
-        <div className="Box"
-       
-          isSelected={num === selectedNumber}
-          key={i}
-          onClick={() => setSelectedNumber(num)}
-          style={{
-            backgroundColor: num === selectedNumber ? "black" : "white",
-            color: num === selectedNumber ? "white" : "black"
-          }}
-        >
-          {num}
-        </div>
-      ))}
-    </div>
+    <NumberSelectContainer>
+      <div className="flex">
+        {arrayNum.map((value, i) => (
+          <Box
+            isSelected={selectedNumber === value}
+            key={i}
+            onClick={() => setSelectedNumber(value)}
+          >
+            {value}
+          </Box>
+        ))}
+      </div>
+      <p>Select Number</p>
+    </NumberSelectContainer>
   );
 }
 
 export default NumberSelect;
-const NumberSelector = () => {
-  return <div>NumberSelector</div>;
+
+const NumberSelectContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+align-items: end;
+
+.flex{
+display: flex;
+gap: 24px;
 }
-
-
-
+p{
+font-size: 24px;
+font-weight: 700;}
   
+`;
+
+const Box = styled.div`
+  height: 72px;
+  width: 72px;
+  border: 1px solid black;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: ${(props) => (props.isSelected ? "black" : "white")};
+  color: ${(props) => (props.isSelected ? "white" : "black")};
+`;
