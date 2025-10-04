@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
-function NumberSelect({setSelectedNumber,selectedNumber }) {
+function NumberSelect({ setError,error, setSelectedNumber, selectedNumber }) {
   const arrayNum = [1, 2, 3, 4, 5, 6];
- 
 
 
+const numSelHandler=(value)=>{
+
+  setSelectedNumber(value)
+  setError("")
+}
   return (
     <NumberSelectContainer>
+      <p className="error">{error}</p>
       <div className="flex">
         {arrayNum.map((value, i) => (
           <Box
             isSelected={selectedNumber === value}
             key={i}
-            onClick={() => setSelectedNumber(value)}
+            onClick={() => numSelHandler(value)}
           >
             {value}
           </Box>
@@ -26,19 +31,21 @@ function NumberSelect({setSelectedNumber,selectedNumber }) {
 export default NumberSelect;
 
 const NumberSelectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 
-display: flex;
-flex-direction: column;
-align-items: end;
-
-.flex{
-display: flex;
-gap: 24px;
-}
-p{
-font-size: 24px;
-font-weight: 700;}
-  
+  .flex {
+    display: flex;
+    gap: 24px;
+  }
+  p {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .error {
+    color: red; 
+  }
 `;
 
 const Box = styled.div`

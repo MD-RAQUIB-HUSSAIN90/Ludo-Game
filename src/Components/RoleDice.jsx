@@ -1,18 +1,10 @@
 import styled from "styled-components";
 
 
-function RoleDice({setDice,dice}) {
+function RoleDice({roleDice,dice}) {
 
 
-  const genRanNum = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
 
-  const roleDice=()=>{
-
-const randomNum=genRanNum(1,6);
-setDice(randomNum);
-  }
 
   return (
     <DiceContainer>

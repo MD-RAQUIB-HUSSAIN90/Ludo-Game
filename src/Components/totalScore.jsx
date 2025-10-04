@@ -1,10 +1,10 @@
 import  '../styles/totalScore.css'
 
-function totalScore() {
+function totalScore({score}) {
   return (
  
        <div className="total-Score">
-        <h1>0</h1>
+        <h1>{score}</h1>
         <p>Total Score</p>
       </div>
 

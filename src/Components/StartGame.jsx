@@ -1,3 +1,6 @@
+import { Button } from "../styles/Button";
+
+
 const StartGame = ({toggle}) => {
   return (
     <div className="container">
@@ -7,7 +10,7 @@ const StartGame = ({toggle}) => {
 
       <div className="content">
         <h1>Dice Game</h1>
-        <button onClick={toggle}>Start Game</button>
+        <Button onClick={toggle}>Play Now</Button>
       </div>
     </div>
   );
